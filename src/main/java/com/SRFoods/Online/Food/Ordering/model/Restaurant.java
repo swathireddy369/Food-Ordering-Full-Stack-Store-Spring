@@ -23,7 +23,7 @@ public class Restaurant {
 
     private String name;
     private String description;
-    private String cuisionType;
+    private String cuisineType;
     @OneToOne
     private Address address;
     @Embedded
