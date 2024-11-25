@@ -1,4 +1,4 @@
-package com.SRFoods.Online.Food.Ordering.servcie;
+package com.SRFoods.Online.Food.Ordering.service;
 
 
 import com.SRFoods.Online.Food.Ordering.model.User;

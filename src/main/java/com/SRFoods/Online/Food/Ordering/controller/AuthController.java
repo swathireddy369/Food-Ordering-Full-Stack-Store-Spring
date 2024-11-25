@@ -8,7 +8,7 @@ import com.SRFoods.Online.Food.Ordering.repository.CartRepository;
 import com.SRFoods.Online.Food.Ordering.repository.UserRepository;
 import com.SRFoods.Online.Food.Ordering.request.LoginRequest;
 import com.SRFoods.Online.Food.Ordering.response.AuthResponse;
-import com.SRFoods.Online.Food.Ordering.servcie.CustomerUserDeatailsService;
+import com.SRFoods.Online.Food.Ordering.service.CustomerUserDeatailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.crypto.SecretKey;
 import java.util.Collection;
 
 @RestController

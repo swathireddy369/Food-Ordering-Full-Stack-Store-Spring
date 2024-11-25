@@ -1,9 +1,10 @@
-package com.SRFoods.Online.Food.Ordering.servcie;
+package com.SRFoods.Online.Food.Ordering.service;
 
 import com.SRFoods.Online.Food.Ordering.dto.RestaurantDto;
 import com.SRFoods.Online.Food.Ordering.model.Restaurant;
 import com.SRFoods.Online.Food.Ordering.model.User;
 import com.SRFoods.Online.Food.Ordering.request.CreateRestaurantRequest;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

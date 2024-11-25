@@ -1,21 +1,20 @@
-package com.SRFoods.Online.Food.Ordering.servcie;
+package com.SRFoods.Online.Food.Ordering.service;
 
 import com.SRFoods.Online.Food.Ordering.dto.RestaurantDto;
 import com.SRFoods.Online.Food.Ordering.model.Address;
-import com.SRFoods.Online.Food.Ordering.model.ContactInformation;
 import com.SRFoods.Online.Food.Ordering.model.Restaurant;
 import com.SRFoods.Online.Food.Ordering.model.User;
 import com.SRFoods.Online.Food.Ordering.repository.AddressRepository;
 import com.SRFoods.Online.Food.Ordering.repository.RestaurantRepository;
 import com.SRFoods.Online.Food.Ordering.repository.UserRepository;
 import com.SRFoods.Online.Food.Ordering.request.CreateRestaurantRequest;
-import org.apache.coyote.Request;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class RestaurantServiceImp implements RestaurantService {
     @Autowired
     private RestaurantRepository restaurantRepository;
@@ -75,6 +74,7 @@ public class RestaurantServiceImp implements RestaurantService {
     public void deleteRestaurant(Long restaurantId) throws Exception {
         Restaurant restaurant = findRestaurantById(restaurantId);
         restaurantRepository.delete(restaurant);
+
     }
 
     @Override
@@ -113,10 +113,20 @@ public class RestaurantServiceImp implements RestaurantService {
         dto.setImages(restaurant.getImages());
         dto.setTitle(restaurant.getName());
         dto.setId(restaurantId);
-        if(user.getFavorites().contains(dto)){
-            user.getFavorites().remove(dto);
+        boolean isFavorited = false;
+        List<RestaurantDto> favorites = user.getFavorites();
+        for(RestaurantDto favorite: favorites){
+            if(favorite.getId().equals(restaurantId)){
+                isFavorited=true;
+                break;
+            }
         }
-        else user.getFavorites().add(dto);
+        //if the restaurant is already favorited,remove it;otherwise ,add it to favorites
+        if(isFavorited){
+            favorites.removeIf(favorite -> favorite.getId().equals(restaurantId));
+        }else{
+            favorites.add(dto);
+        }
         userRepository.save(user);
         return dto;
     }

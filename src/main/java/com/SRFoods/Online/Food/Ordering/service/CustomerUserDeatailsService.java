@@ -1,10 +1,8 @@
-package com.SRFoods.Online.Food.Ordering.servcie;
+package com.SRFoods.Online.Food.Ordering.service;
 
 import com.SRFoods.Online.Food.Ordering.model.USER_ROLE;
 import com.SRFoods.Online.Food.Ordering.model.User;
 import com.SRFoods.Online.Food.Ordering.repository.UserRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
